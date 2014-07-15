@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- Title here -->
+		<title>Indio</title>
+		<!-- Description, Keywords and Author -->
+		<meta name="description" content="YIndependent Music Artist Radio!">
+		<meta name="keywords" content="Indio, indie, music, radio, fans, independent, artist">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<!-- Styles -->
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+      <!-- Gritter -->
+      <link href="css/jquery.gritter.css" rel="stylesheet">
+      <!-- Calendar -->
+      <link href="css/fullcalendar.css" rel="stylesheet">
+      <!-- Bootstrap toggable -->
+      <link href="css/bootstrap-switch.css" rel="stylesheet">
+      <!-- Date and Time picker -->
+      <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+      <!-- Star rating -->
+      <link href="css/rateit.css" rel="stylesheet">
+      <!-- Star rating -->
+      <link href="css/jquery.cleditor.css" rel="stylesheet">
+      <!-- jQuery UI -->
+      <link href="css/jquery-ui.css" rel="stylesheet">
+      <!-- prettyPhoto -->
+      <link href="css/prettyPhoto.css" rel="stylesheet">
+		<!-- Font awesome CSS -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">		
+		<!-- Custom CSS -->
+		<link href="css/style.css" rel="stylesheet">
+      <link type="text/css" href="css/jplayer.css" rel="stylesheet" />
+		
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="#">
+	  
+	  <!--Player-->
+
+		
+	</head>
+	
+	<body>
+
+      
+      <!-- Logo & Navigation starts -->
+      
+      <div class="header">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-3">
+                  <!-- Logo -->
+                  <div class="logo">
+                     <a href="/"><img src="img/INDIO_Logo.png" alt="Indio" class="headlogo"></a>
+                  </div>
+               </div>
+               <div class="col-md-3">
+                  <div class="row">
+                    <div class="col-lg-10">
+                      
+                    </div>
+                  </div>
+               </div>
+               <div class="col-md-6">
+                  <div class="navbar navbar-inverse" role="banner">
+                      <div class="navbar-header">
+                        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
+                          <span>Menu</span>
+                        </button>
+                      </div>
+                      
+                      <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                        <ul class="nav navbar-nav">
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+                            <ul class="dropdown-menu animated fadeInUp">
+                              <li><a href="/user-<%= session[:user] %>">Profile</a></li>
+                              <li><a href="/logout">Logout</a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </nav>
+                      
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      <!-- Logo & Navigation ends -->
+     
+      
+      
+      <!-- Page content -->
+      
+      <div class="page-content blocky">
+         <div class="container">
+
+                  <div class="sidebar-dropdown"><a href="#">MENU</a></div>
+                  <div class="sidey player">
+                  <div class="side-cont">
+                  
+                  	<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+  					<div id="jp_container_1" class="jp-audio">
+                        <div class="jp-type-single">
+                         <div class="jp-details">
+                            <h2><a name="titlelink" href=""><span class="jp-title title_link"></span></a><br>by<br><a name="artistlink" href=""><span class="jp-artist"></span></a></h2>
+                          </div>
+                        <div class="jp-progress">
+                              <div class="jp-seek-bar">
+                                <div class="jp-play-bar"></div>
+                              </div>
+                            </div>
+                            <div class="jp-time-holder" style="display:none;">
+                              <div class="jp-current-time"></div>
+                              <div class="jp-duration"></div>
+                            </div>
+                          <div class="jp-gui jp-interface">
+                                <ul class="jp-controls">
+                                  <li><a href="#" class="jp-play" tabindex="1">play</a></li>
+                                  <li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
+                                </ul>
+                                <span class="skip fa fa-forward"></span>
+                                <form name="like" action="/likesong" method="POST">
+                                    <input type="hidden" name="user" value="<%= session[:user] %>">
+                                    <input type="hidden" name="song" value="">
+                                    <input type="hidden" name="dothis" value="like">
+                                    <span onclick="like.submit()" class="likebutton fa fa-thumbs-up"></span>
+                                  </form>
+                                  <form name="dislike" action="/likesong" method="POST">
+                                    <input type="hidden" name="user" value="<%= session[:user] %>">
+                                    <input type="hidden" name="song" value="">
+                                    <input type="hidden" name="dothis" value="dislike">
+                                    <span onclick="dislike.submit()" class="dislikebutton fa fa-thumbs-down"></span>
+                                  </form>
+                        </div>
+                          <div class="jp-no-solution">
+                            <span>Update Required</span>
+                            To play the media you will need to either update your browser to a recent version or update your <a  href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                          </div>
+                        </div>
+                     </div>
+                     </div>
+                  </div>
+                  <div class="sidey">
+                 
+                     <div class="side-cont">
+                        <ul class="nav">
+                            <!-- Main menu -->
+                            <li class="current"><a href="/"><i class="fa fa-home"></i> Home</a></li>
+                            <li><a href="/events"><i class="fa fa-calendar"></i> Events</a></li>
+                            <li class="has_submenu">
+                                 <a href="#">
+                                    <i class="fa fa-globe"></i> Discover
+                                    <span class="caret pull-right"></span>
+                                 </a>
+                                 <!-- Sub menu -->
+                                 <ul>
+                                    <li><a href="/artist">Artist</a></li>
+                                    <li><a href="/music">Music</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/upload"><i class="fa fa-upload"></i> Upload</a></li>
+                        </ul>
+                     </div>
+                  </div>
+            
+                  <div class="mainy">
+                     <%= yield %>
+                  </div>
+            
+            <div class="clearfix"></div>
+            
+         </div>
+      </div>
+     
+      
+      
+      <!-- Footer starts -->
+      <footer>
+         <div class="container">
+         
+            <div class="copy text-center">
+               Copyright 2014 &copy; - Indio Incorporated
+            </div>
+            
+         </div>
+      </footer>
+      <!-- Footer ends -->
+      
+      <!-- Scroll to top -->
+      <span class="totop"><a href="#"><i class="fa fa-chevron-up"></i></a></span> 
+      
+		<!-- Javascript files -->
+		<!-- jQuery -->
+		<script src="js/jquery.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="js/bootstrap.min.js"></script>  
+      <!-- jQuery UI -->
+      <script src="js/jquery-ui-1.10.2.custom.min.js"></script>     
+      <!-- jQuery Peity -->
+      <script src="js/peity.js"></script>  
+      <!-- Calendar -->
+      <script src="js/fullcalendar.min.js"></script>  
+      <!-- Gritter plugin -->
+      <script src="js/jquery.gritter.min.js"></script> 
+      <!-- Date and Time picker -->
+      <script src="js/bootstrap-datetimepicker.min.js"></script>  
+      <!-- jQuery Toggable -->
+      <script src="js/bootstrap-switch.min.js"></script>
+		<!-- Respond JS for IE8 -->
+		<script src="js/respond.min.js"></script>
+		<!-- HTML5 Support for IE -->
+		<script src="js/html5shiv.js"></script>
+		<!-- Custom JS -->
+		<script src="js/custom.js"></script>
+	
+    <script type="text/javascript" src="/js/jquery.jplayer.min.js"></script>
+		<script type="text/javascript">
+		function changeSong() {
+		  $.get("/nextsong", function(song) {
+		    
+		    nextsong = JSON.parse(song);
+		    $("input[name=song]").attr("value", nextsong.id);
+		    $("a[name=titlelink]").attr("href", "song"+nextsong.id);
+		    $("a[name=artistlink]").attr("href", "user-"+nextsong.artist.toLowerCase());
+		   
+		    loadPlayer(song.url);
+		  })
+		}
+		
+		function loadPlayer(song_url) {
+		  $("#jquery_jplayer_1").jPlayer('destroy');
+		  $("#jquery_jplayer_1").jPlayer({
+        ready: function () {
+          $("#jquery_jplayer_1").jPlayer("setMedia", {
+                title: nextsong.title,
+                artist: nextsong.artist,
+                mp3: nextsong.url 
+             });  
+  		    $("#jquery_jplayer_1").jPlayer("play");
+
+        
+        },
+        ended: function() { 
+              changeSong();
+        },
+        swfPath: "/js",
+        supplied: "mp3"
+      });
+     
+		}
+		
+		
+    $(document).ready(function(){
+      changeSong();  
+       $(".jp-play").click(function() {
+       $("#jquery_jplayer_1").jPlayer("play");
+      });
+      $(".jp-pause").click(function() {
+       $("#jquery_jplayer_1").jPlayer("pause");
+      });
+      $(".skip").click(function() {
+        changeSong();
+      });
+  });
+      
+      $(document).on('change', '.btn-file :file', function() {
+  var input = $(this),
+      numFiles = input.get(0).files ? input.get(0).files.length : 1,
+      label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+  input.trigger('fileselect', [numFiles, label]);
+});
+
+$(document).ready( function() {
+    $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = numFiles > 1 ? numFiles + ' files selected' : label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+        
+    });
+});
+
+<% if User.where(username: session[:user])[0].finish == false %>
+window.onload = function() {$('#finish').modal('show')};
+<% end %>
+
+  </script>
+	</body>	
+</html>

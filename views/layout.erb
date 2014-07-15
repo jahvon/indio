@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Indio</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/layout/jquery.scrolly.min.js"></script>
+		<script src="js/layout/jquery.scrollzer.min.js"></script>
+		<script src="js/layout/skel.min.js"></script>
+		<script src="js/layout/skel-layers.min.js"></script>
+		<script src="js/layout/init.js"></script>
+		<script type="text/javascript" src="/js/jquery.jplayer.min.js"></script>
+		<script type="text/javascript">
+		function changeSong() {
+			$.get("/nextsong", function(song) {
+			    nextsong = JSON.parse(song);
+			    $("input[name=song]").attr("value", nextsong.id);
+			    $("a[name=titlelink]").attr("href", "song"+nextsong.id);
+			    $("a[name=artistlink]").attr("href", "user-"+nextsong.artist.toLowerCase());
+			    loadPlayer(song.url);
+			})
+		}
+		
+		function loadPlayer(song_url) {
+			$("#jquery_jplayer_1").jPlayer('destroy');
+			$("#jquery_jplayer_1").jPlayer({
+		        ready: function () {
+		          	$("#jquery_jplayer_1").jPlayer("setMedia", {
+		                title: nextsong.title,
+		                artist: nextsong.artist,
+		                mp3: nextsong.url 
+		            });  
+		  		    $("#jquery_jplayer_1").jPlayer("play");
+		        },
+		        ended: function() { 
+		        	changeSong();
+		        },
+		        swfPath: "/js",
+		        supplied: "mp3"
+	      	});
+		}
+		
+    	$(document).ready(function(){
+      		changeSong();  
+       		$(".jp-play").click(function() {
+       			$("#jquery_jplayer_1").jPlayer("play");
+      		});
+      		$(".jp-pause").click(function() {
+       			$("#jquery_jplayer_1").jPlayer("pause");
+      		});
+      		$(".skip").click(function() {
+        		changeSong();
+      		});
+  		});
+      
+      	$(document).on('change', '.btn-file :file', function() {
+  			var input = $(this),
+      		numFiles = input.get(0).files ? input.get(0).files.length : 1,
+      		label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+  			input.trigger('fileselect', [numFiles, label]);
+		});
+
+		$(document).ready( function() {
+    		$('.btn-file :file').on('fileselect', function(event, numFiles, label) {
+        		var input = $(this).parents('.input-group').find(':text'),
+            	log = numFiles > 1 ? numFiles + ' files selected' : label;
+        
+        		if( input.length ) {
+            		input.val(log);
+        		} else {
+            		if( log ) alert(log);
+        		}
+        
+    		});
+		});
+  	</script>
+  	<link type="text/css" href="css/style.css" rel="stylesheet" />
+  	<link type="text/css" href="css/jplayer.css" rel="stylesheet" />
+  	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<noscript>
+			<link rel="stylesheet" href="css/layout/skel.css" />
+			<link rel="stylesheet" href="css/layout/style.css" />
+			<link rel="stylesheet" href="css/layout/style-wide.css" />
+			
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<div id="header" class="skel-layers-fixed">
+
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="img/avatar.png" alt="" /></span>
+							<h1 id="title"><%= session[:user].capitalize %></h1>
+							<p><a href="/finish">Settings</a> | <a href="/logout">Logout</a></p>
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="/home" class="skel-layers-ignoreHref"><span class="icon fa-home">Home</span></a></li>
+								<li><a href="/user-<%= session[:user] %>" class="skel-layers-ignoreHref"><span class="icon fa-user">Profile</span></a></li>
+								<li><a href="/events" class="skel-layers-ignoreHref"><span class="icon fa-calendar">Events</span></a></li>
+								<li><a href="/discover" class="skel-layers-ignoreHref"><span class="icon fa-globe">Discover</span></a></li>
+								<li><a href="/upload" class="skel-layers-ignoreHref"><span class="icon fa-upload">Upload</span></a></li>
+							</ul>
+						</nav>
+						
+				</div>
+				
+				<div class="bottom">
+					<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+  					<div id="jp_container_1" class="jp-audio">
+                        <div class="jp-type-single">
+                         <div class="jp-details">
+                            <h4><a name="titlelink" href=""><span class="jp-title title_link"></span></a> by <a name="artistlink" href=""><span class="jp-artist"></span></a></h4>
+                          </div>
+                          <div class="lower_wrapper" style="padding-left:16%">
+                        <div class="jp-progress">
+                              <div class="jp-seek-bar">
+                                <div class="jp-play-bar"></div>
+                              </div>
+                            </div>
+                            <div class="jp-time-holder" style="display:none;">
+                              <div class="jp-current-time"></div>
+                              <div class="jp-duration"></div>
+                            </div>
+                          <div class="jp-gui jp-interface">
+                                <ul class="jp-controls">
+                                  <li><a href="#" class="jp-play" tabindex="1">play</a></li>
+                                  <li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
+                                </ul>
+                                <span class="skip fa fa-forward"></span>
+                                <form name="like" action="/likesong" method="POST">
+                                    <input type="hidden" name="user" value="<%= session[:user] %>">
+                                    <input type="hidden" name="song" value="">
+                                    <input type="hidden" name="dothis" value="like">
+                                    <span onclick="like.submit()" class="likebutton fa fa-thumbs-up"></span>
+                                  </form>
+                                  <form name="dislike" action="/likesong" method="POST">
+                                    <input type="hidden" name="user" value="<%= session[:user] %>">
+                                    <input type="hidden" name="song" value="">
+                                    <input type="hidden" name="dothis" value="dislike">
+                                    <span onclick="dislike.submit()" class="dislikebutton fa fa-thumbs-down"></span>
+                                  </form>
+                        </div>
+                        </div>
+                          <div class="jp-no-solution">
+                            <span>Update Required</span>
+                            To play the media you will need to either update your browser to a recent version or update your <a  href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
+                          </div>
+                        </div>
+                     </div>
+                     </div>
+                  </div>
+				</div>
+			
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+				<%= yield %>
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+				
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; 2014 - 2015 Your Indio Inc., All Rights Reserved </li><li>The Legal Stuff</li>
+					</ul>
+				
+			</div>
+
+	</body>
+</html>

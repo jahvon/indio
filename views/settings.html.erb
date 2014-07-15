@@ -1,0 +1,45 @@
+<ul class="nav nav-tabs" role="tablist" id="myTab">
+  <li class="active"><a href="#basic" role="tab" data-toggle="tab">Basic</a></li>
+  <li><a href="#advanced" role="tab" data-toggle="tab">Advanced</a></li>
+  <li><a href="#payment" role="tab" data-toggle="tab">Payment</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="basic">
+    <form>
+      <p><img src=""><br><div class="input-group">
+                <span class="input-group-btn">
+                    <span class="btn btn-primary btn-file">Browse&hellip; <input type="file" name="picture"></span>
+                </span>
+                <input type="text" class="form-control" readonly></div></p>
+      <p><img src="img/username_btn.jpg"><br><input type="text" class="form-control" name="username"></p>
+      <p><img src="img/email_btn.jpg"><br><input type="text" class="form-control" name="email"></p>
+      <p><input type="text" class="form-control" name="name"></p>
+      <p><textarea name="bio" class="form-control"></textarea></p>
+      <p><input type="text" class="form-control" name="current_password"></p>
+      <p><input type="text" class="form-control" name="new_password"></p>
+      <p><input type="text" class="form-control" name="new_password_con"></p>
+    </form>
+  </div>
+  
+  <div class="tab-pane" id="advanced">...</div>
+  
+  <div class="tab-pane" id="payment">
+    <p>Our payments are powered by <a href="https://stripe.com">Stripe</a>. All information submitted through this form is only used by Stripe and will not be shared with anyone! 
+      <br><b>Indio takes 10% of all sales made on this site. Your earnings are transferred to your bank account on a 2-day rolling basis.</b>
+    </p>
+    <form method="POST" method="/stripe_recipient">    
+      Bank Location<select data-stripe="country"><option value="US">United States</option></select>
+      Routing Number<input type="text" size="9" data-stripe="routingNumber"/>
+      Account Number<input type="text" size="17" data-stripe="accountNumber"/>
+      <button type="submit">Make Recipient!</button>
+    </form>
+  </div>
+  
+</div>
+
+<script>
+  $(function () {
+    $('#myTab a:first').tab('show')
+  })
+</script>

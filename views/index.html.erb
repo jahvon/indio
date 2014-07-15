@@ -1,0 +1,250 @@
+<!DOCTYPE HTML>
+<% if session[:user] != nil
+redirect to :"/home"
+end %>
+<html>
+	<head>
+		<title>Indio</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/landing/jquery.dropotron.min.js"></script>
+		<script src="js/landing/jquery.scrollgress.min.js"></script>
+		<script src="js/landing/skel.min.js"></script>
+		<script src="js/landing/skel-layers.min.js"></script>
+		<script src="js/landing/init.js"></script>
+		<script src="js/jquery.leanModal.min.js"></script>
+		<script src="js/validate.min.js"></script>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<noscript>
+			<link rel="stylesheet" href="css/landing/skel.css" />
+			<link rel="stylesheet" href="css/landing/style.css" />
+			<link rel="stylesheet" href="css/landing/style-wide.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body class="landing">
+
+		<!-- Header -->
+			<header id="header" class="alt">
+				<h1><a href="/">Indio</a> coming soon</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="/devin">Devs and Testers</a></li>
+						<li><a href="#signin" rel="leanModal" name="signin" class="button">Sign In</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Banner -->
+			<section id="banner">
+				<img src="img/INDIO_Logo.png" class="landing-logo">
+				<p>Music for you, Made by someone new.</p>
+				<ul class="actions">
+					<li><a href="#signup" rel="leanModal" name="signup" class="button special">Sign Up</a></li>
+					<li><a href="#" class="button">Learn More</a></li>
+				</ul>
+			</section>
+
+		<!-- Main -->
+			<section id="main" class="container">
+
+				<section class="box special">
+					<header class="major">
+						<h2>Indie music radio configured to your taste. Connect with<br />independent music artists or easily build your fan base.</h2>
+						<p>There are so many music websites and online radio applications but there are none that cater to indie artists specifically.
+						Indio brings together independent music artists and the randomness of a radio station. Don’t want to listen to music randomly?
+						Don’t worry, The more you like and dislike songs, the more refined the music you hear gets to your specific taste. In no time you will become a fan
+						of great indie artists. Indio also makes it easy to follow your favorite artist and gives you updates on their latest events, songs, and anything else
+						they would like to share with you.  Signing up as an independent artist could easily expand your fanbase or even help you find a potential artist to collaborate with. </p>
+					</header>
+				</section>
+
+				<section class="box special features">
+					<div class="features-row">
+						<section>
+							<h3>Connect with new artist</h3>
+							<p>Follow artist who you like and receive their latest updates, buy their music, and even follow events that they will be attending!</p>
+						</section>
+						<section>
+							<h3>Listen to music that YOU will like</h3>
+							<p>After liking and disliking a few songs, what you hear would be music recommended for you based on your unique taste!</p>
+						</section>
+					</div>
+					<div class="features-row">
+						<section>
+							<h3>Receive feedback</h3>
+							<p>As an indie artist, you could easily interact with our fans by receiving feedback and comments!</p>
+						</section>
+						<section>
+							<h3>Everything in one place</h3>
+							<p>No need to go post your information all over, you can provide your fans with anything they would need to know about you and your music here!</p>
+						</section>
+					</div>
+				</section>
+
+			</section>
+
+		<!-- CTA -->
+			<section id="cta">
+
+				<h2>Sign up for beta access</h2>
+				<p>Indio is still under works right now but you could sign up to be notified when it open up!<br />
+				We promise, we will not spam you with emails or share your email with anyone else!</p>
+
+				<form action="/betalist" method="post">
+					<div class="row uniform 50%">
+						<div class="8u 12u(3)">
+							<input type="email" name="email" id="email" placeholder="Email Address" />
+						</div>
+						<div class="4u 12u(3)">
+							<input type="submit" value="Sign Up" class="fit" />
+						</div>
+					</div>
+				</form>
+
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<ul class="copyright">
+					<li>&copy; 2014 - 2015 Your Indio Inc., All Rights Reserved </li><li>The Legal Stuff</li>
+				</ul>
+			</footer>
+
+		<!-- Modals -->
+			<div id="signin">
+				<h2>Sign in</h2>
+				<form name="signin" action="/signin" method="post">
+					<div class="row">
+						<span id="signInErrors"></span>
+						<p>Don't have an account? <a href="#signup" class="modal_close" rel="leanModal" name="signup">Sign Up Today!</a></p>
+						<div class="12u"><p><input type="email" name="email" placeholder="Email" /></p></div>
+						<div class="12u"><p><input type="password" name="password" placeholder="Password" /></p></div>
+						<div class="5u"><input type="submit" value="Sign In"></div>
+						<div class="7u"><a href="#reset" class="modal_close" rel="leanModal" name="reset">Forgot your password? </a></div>
+					</div>
+				</form>
+			</div>
+			<div id="signup">
+				<h2>Sign Up</h2>
+				<form name="signup" action="/signup" method="post" >
+					<div class="row">
+						<span id="signUpErrors"></span>
+						<div class="12u">
+							<p>Already have an account? <a href="#signin" class="modal_close" rel="leanModal" name="signin">Sign In</a></p>
+						</div>
+						<div class="12u"><p><input type="text" name="username" placeholder="Username" /></p></div>
+						<div class="12u"><p><input type="email" name="email" placeholder="Email" /></p></div>
+						<div class="6u"><p><input type="password" name="password" placeholder="Password" /></p></div>
+						<div class="6u"><p><input type="password" name="confirmed_password" placeholder="Confirm Password" /></p></div>
+						<div class="12u">
+							<p><input type="checkbox" id="artist" name="artist" /><label for="artist">I am an independent artist</label></p>
+						</div>
+						<div class="12u"><input type="submit" value="Submit"></div>
+					</div>
+				</form>
+			</div>
+			<div id="reset">
+				<h2>Reset your password</h2>
+					<% if params[:code] == nil %>
+					<div class="row">
+						<span id="resetErrors"></span>
+						<form name="reset_email" action="/resetpw_email" method="post">
+							<div class="12u">
+								<p>You will receive instruction on how to reset you password through the email you signed up with.</p>
+							</div>
+							<div class="12u"><p><input type="text" name="username" placeholder="Username" /></p></div>
+					<% else %>
+						<form name="resetpw" class="resetpw" action="/resetpw" method="post">
+							<input type="text" name="user" value="<%= @user %>" hidden="true">
+							<div class="12u"><p><input type="password" name="password" placeholder="New Password" /></p></div>
+							<div class="12u"><p><input type="password" name="confirmed_password" placeholder="Confirm New Password" /></p></div>
+					<% end %>
+							<div class="12u"><input type="submit" value="Submit"></div>
+					</div>
+				</form>
+			</div>
+
+			<a href="#reset" id="showReset" style="display:none" rel="leanModal" name="reset"></a>
+			<a href="#signin" id="showSignIn" style="display:none" rel="leanModal" name="signin"></a>
+			<a href="#signup" id="showSignUp" style="display:none" rel="leanModal" name="signup"></a>
+
+			<script>
+			//Modals
+			$("a[rel*=leanModal]").leanModal({ top : 25 });
+
+			if (location.href.indexOf("#reset") != -1) {$("#showReset").click();}
+			if (location.href.indexOf("#signup") != -1) {$("#showSignUp").click();}
+			if (location.href.indexOf("#signin") != -1) {$("#showSignIn").click();}
+
+			//Forms validation
+			//Sign In Form
+			var validator = new FormValidator('signin', [{
+				name: 'password',
+				rules: 'required'
+			}, {
+				name: 'email',
+				rules: 'valid_email|required'
+			}], function(errors, event) {
+				var errorString = '';
+
+				for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
+					errorString += errors[i].message + '<br />';
+				}
+				document.getElementById('signInErrors').innerHTML = errorString
+			});
+			//Sign Up forms
+			var validator = new FormValidator('signup', [{
+				name: 'username',
+				rules: 'required'
+			}, {
+				name: 'email',
+				rules: 'valid_email|required'
+			}, {
+				name: 'password',
+				rules: 'required'
+			}, {
+				name: 'confirmed_password',
+				rules: 'required|matches[password]'
+			}], function(errors, event) {
+				var errorString = '';
+
+				for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
+					errorString += errors[i].message + '<br />';
+				}
+				document.getElementById('signUpErrors').innerHTML = errorString
+			});
+			//Reset password forms
+			var validator = new FormValidator('reset_email', [{
+				name: 'username',
+				rules: 'required'
+			}], function(errors, event) {
+				var errorString = '';
+
+				for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
+					errorString += errors[i].message;
+				}
+				document.getElementById('resetErrors').innerHTML = errorString
+			});
+			var validator = new FormValidator('resetpw', [{
+				name: 'password',
+				rules: 'required'
+			}, {
+				name: 'confirmed_password',
+				rules: 'required|matches[password]'
+			}], function(errors, event) {
+				var errorString = '';
+
+				for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
+					errorString += errors[i].message + '<br />';
+				}
+				document.getElementById('resetErrors').innerHTML = errorString
+			});
+			</script>
+	</body>
+</html>

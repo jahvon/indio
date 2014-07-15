@@ -1,0 +1,162 @@
+.jp-container {
+	position:relative;
+	width:140px;
+	height:140px;
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+.jp-container :focus {
+	border:none;
+	outline:0;
+}
+
+div.jp-interface ul.jp-controls {
+	list-style-type:none;
+	margin:0;
+	padding: 0;
+	overflow:hidden;
+}
+
+div.jp-interface ul.jp-controls a {
+	display:block;
+	overflow:hidden;
+	text-indent:-9999px;
+}
+a.jp-play,
+a.jp-pause {
+	margin:0 auto;
+}
+.jp-controls {
+	display:block;
+
+}
+.jp-play {
+
+}
+
+.jp-play:hover {
+
+}
+
+.jp-pause {
+
+}
+
+.jp-pause:hover {
+}
+
+/* @group progress bar */
+
+div.jp-progress {
+	overflow:hidden;
+	background-color: #ddd;
+}
+div.jp-audio div.jp-progress {
+	margin-top:5px;
+	border:1px solid #fff;
+	height:10px;
+}
+div.jp-audio div.jp-type-single div.jp-progress {
+	width:140px;
+}
+div.jp-seek-bar {
+	background: url("play_bar.jpg") 0 0px repeat-x;
+	width:0px;
+	height:100%;
+	cursor: pointer;
+}
+div.jp-play-bar {
+	background: url("play_bar.jpg") 0 -15px repeat-x ;
+	width:0px;
+	height:100%;
+}
+
+/* The seeking class is added/removed inside jPlayer */
+div.jp-seeking-bg {
+	background: url("jplayer.blue.monday.seeking.gif");
+}
+
+
+
+div.jp-details {
+	font-weight:bold;
+	text-align:center;
+}
+
+
+div.jp-jplayer audio,
+div.jp-jplayer {
+	width:0px;
+	height:0px;
+}
+
+
+/* @group NO SOLUTION error feedback */
+
+.jp-no-solution {
+	padding:5px;
+	font-size:.8em;
+	background-color:#eee;
+	border:2px solid #009be3;
+	color:#000;
+	display:none;
+}
+
+.jp-no-solution a {
+	color:#000;
+}
+
+.jp-no-solution span {
+	font-size:1em;
+	display:block;
+	text-align:center;
+	font-weight:bold;
+}
+
+.jp-current-time {
+	position:absolute;
+	font-size:12px;
+	margin-top:-14px;
+	margin-left:-35px;
+}
+
+.jp-duration {
+	position:absolute;
+	font-size:12px;
+	margin-top:-14px;
+	margin-left:144px;
+}
+
+.likebutton {
+    display:block;
+    font-size:25px;
+    position:absolute;
+    margin-left:-36px;
+    margin-top:160px;
+    border: none;
+    cursor: pointer; 
+}
+
+.dislikebutton {
+    display:block;
+    font-size:25px;
+    position:absolute;
+    margin-left:-70px;
+    margin-top:160px;
+    border: none;
+    cursor: pointer; 
+}
+
+.skip {
+    display:block;
+    color:#FFF;
+    font-size:25px;
+    position:absolute;
+    margin-top:160px;
+    margin-left:150px;
+    border:none;
+    cursor:pointer;
+}
+.skip:hover, .likebutton:hover, .dislikebutton:hover {
+    color:#154f58;
+}

@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <title>Indio</title>
+</head>
+
+<body>
+<header id="top" class="landing-header">
+    <div class="vertical-center">
+      <img src="img/INDIO_Logo.png" class="landing-logo">
+            <h1>Music for you, Made by someone new</h1>
+            <h3>Indie music radio configured to your taste. Connect with independent music artist or easily build your fan base.</h3>
+            <br>
+            <a href="#about" class="btn btn-dark btn-lg"  data-target="#signIn" data-toggle="modal">Sign In</a> <a href="#about" class="btn btn-dark btn-lg" data-target="#signUp" data-toggle="modal">Sign Up</a>
+        </div>
+</header>
+
+<div class="col-lg-12 text-center">
+    <h1>About Indio</h1>
+    <p> There are so many music websites and online radio applications but there are none that cater to independent artists specifically. Indio brings together independent music artists and the randomness of a radio station. Don’t want to listen to music randomly? Don’t worry, The more you like and dislike songs, the more refined the music you hear gets to your specific taste. In no time you will become a fan of great indie artists. Indio also makes it easy to follow your favorite artist and gives you updates on their latest events, songs, and anything else they would like to share with you.  Signing up as an independent artist could easily expand your fanbase or even help you find a potential artist to collaborate with. 
+YourIndio.com;. Music for you, made by someone new. </p>
+                </div>
+
+<% if session[:user] == nil %>
+
+<div class="modal fade" id="signIn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Sign In</h3>
+  </div>
+  <div class="modal-body">
+     <form class="signin" action="/signin" method="post">
+    <% if params[:value] != nil %><div class="alert alert-danger" role="alert"><%= FormError.value(params[:value]) %></div><% end %>
+    <p>Don't have an account? <a href="#signUp" data-toggle="modal" data-dismiss="modal">Sign Up Today!</a></p>
+    <p><input class="form-control" type="text" name="username" placeholder="Username" /></p>
+    <p><input class="form-control" type="password" name="password" placeholder="Password" /></p>
+    <p align="right"><a href="#resetPw" data-toggle="modal" data-dismiss="modal">Forgot your password? </a></p>
+  </div>
+  <div class="modal-footer">
+    <input class="btn btn-info" type="submit" value="Sign In">
+    <a data-dismiss="modal" class="btn btn-default">Close</a>
+    </form>
+     </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Sign Up</h3>
+  </div>
+  <div class="modal-body">
+    <form method="post" action="/signup" method="post" >
+    <% if params[:status] == "errorregister" %><div class="alert alert-danger" role="alert">Registration failed. We ran into the following problems:
+      <ul>
+        <% if params[:uvalue] != nil %><%="<li>#{FormError.value(params[:uvalue])}</li>"%><% end %>
+        <% if params[:pvalue] != nil %><%="<li>#{FormError.value(params[:pvalue])}</li>"%><% end %>
+        <% if params[:evalue] != nil %><%="<li>#{FormError.value(params[:evalue])}</li>"%><% end %>
+        <% if params[:ivalue] != nil %><%="<li>#{FormError.value(params[:ivalue])}</li>"%><% end %>
+      </ul>
+    </div><% end %>
+    <% if params[:status] == "successregister" %><div class="alert alert-success" role="alert"><%= FormError.value(params[:svalue]) %></div><% end %>
+    <p><input class="form-control" type="text" name="username" value="<%= @uname %>" placeholder="Username" />
+    <p><input class="form-control" type="email" name="email" value="<%= @email %>"placeholder="Email" />
+    <p><input class="form-control" type="password" name="pass" placeholder="Password" />
+    <p><input class="form-control" type="password" name="cpass" placeholder="Confirm Password" />
+    <p><input  type="checkbox" name="artist" value"indie" /> Are you an independent artist?</p>
+  </div>
+  <div class="modal-footer">
+    <input class="btn btn-info" type="submit" value="Register">
+    <a data-dismiss="modal" class="btn btn-default">Close</a>
+    </form>
+     </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="resetPw" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Reset Password</h3>
+  </div>
+  <div class="modal-body">
+    <% if params[:code] == nil %>
+     <form class="resetpw" action="/resetpw_email" method="post">
+     <% if params[:value] != nil %><div class="alert alert-danger" role="alert"><%= params[:value] %></div><% end %>
+     <p>You will receive instruction on how to reset you password through the email you signed up with.</p>
+    <p><input class="form-control" type="text" name="username" placeholder="Username" /></p>
+    <% else %>
+    <form class="resetpw" action="/resetpw" method="post">
+    <% if params[:value] != nil %><div class="alert alert-danger" role="alert"><%= params[:value] %></div><% end %>
+    <input type="text" name="user" value="<%= @user %>" hidden="true">
+    <p><input class="form-control" type="password" name="pass" placeholder="New Password" /></p>
+    <p><input class="form-control" type="password" name="cpass" placeholder="Confirm New Password" /></p>
+    <% end %>
+  </div>
+  <div class="modal-footer">
+    <input class="btn btn-info" type="submit" value="Submit">
+    <a data-dismiss="modal" class="btn btn-default">Close</a>
+    </form>
+     </div>
+    </div>
+  </div>
+</div>
+
+<% else   %>
+<% redirect to :"/home" %>
+<% end %>
+
+ <script type="text/javascript">
+    <% if params[:status] == "errorlogin" %>window.onload = function() {$('#signIn').modal('show')};
+    <% elsif params[:status] == "errorregister" %>window.onload = function() {$('#signUp').modal('show')};
+    <% elsif params[:status] == "pwreset" %>window.onload = function() {$('#resetPw').modal('show')}; <% end %>
+  </script>
+
+</body>
+</html>

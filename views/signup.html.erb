@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<title>Sign Up</title>
+</head>
+
+<body>
+<div class="header">
+	<h1>Indio</h1>
+</div>
+
+<div class="content">
+<% if session[:user] != nil %>
+You are already signed in
+
+<% else %>
+
+<h2>Sign Up</h2>
+<p style="color:red"><%= @regstatus %></p>
+
+<form method="post" action="/signup" method="post" >
+<p>Username: <input type="text" name="username" value="<%= @uname %>"/><%= @usererror %></p>
+<p>Email: <input type="email" name="email" value="<%= @email %>"/><%= @emailerror %></p>
+<p>Password: <input type="password" name="pass" /><%= @passerror %></p>
+<p>Confirm Password: <input type="password" name="cpass" /><%= @passerror2 %></p>
+<p><input type="checkbox" name="artist" value"indie" /> I am an independent artist</p>
+<input type="submit" />
+
+
+</form>
+<% end %>
+</div>
+
+<div class="footer"></div>
+
+</body>
+</html>

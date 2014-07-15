@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<% if session[:user] != nil
+redirect to :"/home"
+end %>
+<html>
+	<head>
+		<title>Indio</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/landing/skel.min.js"></script>
+		<script src="js/landing/skel-layers.min.js"></script>
+		<script src="js/landing/init.js"></script>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<noscript>
+			<link rel="stylesheet" href="css/landing/skel.css" />
+			<link rel="stylesheet" href="css/landing/style.css" />
+			<link rel="stylesheet" href="css/landing/style-wide.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+
+	<body>
+
+		<section id="cta" class="log">
+
+				<h2>Log In w/ your email</h2>
+
+				<form action="/signin" method="post" style="width:50em">
+					<div class="row">
+						<div class="5u">
+							<input type="email" name="email" id="email" placeholder="Email Address" />
+						</div>
+						<div class="4u">
+							<input type="password" name="password" placeholder="Password" />
+						</div>
+						<div class="3u">
+							<input type="submit" value="Submit" class="fit" />
+						</div>
+					</div>
+				</form>
+
+			</section>
+<br>
+			<section>
+				<div class="container">
+					<div class="row">
+						<img src="img/FacebookLogin.png" class="4u">
+						<img src="img/TwitterLogin.png" class="4u">
+						<img src="img/GoogleLogin.png" class="4u">
+					</div>
+				</div>
+			</section>
+	</body>

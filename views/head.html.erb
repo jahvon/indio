@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="css/skin/circle.player.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jplayer/jquery.transform2d.js"></script>
+	<script type="text/javascript" src="js/jplayer/jquery.grab.js"></script>
+	<script type="text/javascript" src="js/jplayer/jquery.jplayer.js"></script>
+	<script type="text/javascript" src="js/jplayer/mod.csstransforms.min.js"></script>
+	<script type="text/javascript" src="js/jplayer/circle.player.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
+     <%
+    base_uri = 'https://rubyjd.firebaseio.com/'
+    firebase = Firebase::Client.new(base_uri)
+    
+    songs = firebase.get('songs').body
+    song = songs.to_a.sample(1)
+    " "
+    %>
+    
+    <script type="text/javascript">
+		$(document).ready(function(){
+			var myCirclePlayer = new CirclePlayer("#jquery_jplayer_1",
+			{
+				mp3: "https://s3.amazonaws.com/indio/music/<%= song[0][0] %>",
+			}, {
+			    supplied: "mp3",
+				cssSelectorAncestor: "#cp_container_1",
+				canplay: function() {$("#jquery_jplayer_1").jPlayer("play");}
+			});
+		});
+		</script>
+    
+    <title>Welcome</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+</head>
+
+<body>
+<div id="jquery_jplayer_1" class="cp-jplayer"></div>
+<div id="wrap">
+<!-- Fixed navbar -->
+  <div class="navbar navbar-custom navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/"><img src="img/INDIO_Logo_head.png" class="headlogo"></a>
+      </div>
+      <div class="navlink">
+        <a href="#">Home</a>
+        <a href="#">Settings</a>
+        <% if session[:ulevel] >= 2 %> <a href="upload">Upload file</a> <% end %> 
+        <a href="/profile/<%= session[:user] %>">View your profile</a> 
+        <a href="/logout">Sign Out</a>
+      </div>
+    </div>
+  </div>
+
+    <div class="headercolor">
+    
+         <div class="prototype-wrapper">
+			<div id="cp_container_1" class="cp-container">
+			<img src="img/graduation-album-cover.jpg" alt="..." class="img-circle" style="height:140px; width:140px; z-index:0; position:absolute; margin-top:.5px; margin-left:.5px">
+				<div class="cp-buffer-holder"> 
+					<div class="cp-buffer-1"></div>
+					<div class="cp-buffer-2"></div>
+				</div>
+				<div class="cp-progress-holder"> 
+					<div class="cp-progress-1"></div>
+					<div class="cp-progress-2"></div>
+				</div>
+				<div class="cp-circle-control"></div>
+				<ul class="cp-controls">
+					<li><a class="cp-play" tabindex="1">play</a></li>
+					<li><a class="cp-pause" style="display:none;" tabindex="1">pause</a></li>
+				</ul>
+			</div>
+			<a href="#"><%= song[0][1]['title'] %></a> by <%= song[0][1]['artist'] %>
+			
+		</div>
+    </div>

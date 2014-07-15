@@ -1,0 +1,36 @@
+<section id="contact" class="four">
+	<div class="container">
+
+		<header><h2>Upload a Song</h2></header>
+
+		<p>All music uploaded must follow our terms and conditions! Please look over that before you upload your files.</p>
+							
+		<form method="post" action="/upload" enctype="multipart/form-data">
+			<div class="row">
+				<div class="4u"><div class="fileUpload button"><span>Choose File</span><input type="file" id="uploadBtn" name="song_file" class="upload" /></div></div>
+				<div class="8u"><input type="text" id="uploadFile" placeholder="..." readonly /></div>
+			</div>
+			<div class="row 50%">
+				<div class="6u"><input type="text" name="title" value="<%= @title %>" placeholder="Title"></div>
+				<div class="6u"><input type="text" name="album" value="<%= @album %>" placeholder="Album (Put single if no album)"></div>
+			</div>
+			<div class="row 50%">
+				<div class="12u"><textarea rows="3" name="desc" placeholder="Description"></textarea></div>
+				
+				<div class="9u">If you would like to use Indio to sell your music, enter a price. Otherwise enter a url to where the song can be purchased.</div>
+				<div class="3u"><input class="form-control" type="text" name="price" placeholder="Song sale price"></div>
+				<div class="12u"><input class="form-control" type="text" name="url" placeholder="Alternative location to purchase the song"></div>
+			</div>
+			<div class="row">
+				<div class="12u"><input type="submit" value="Submit for review"></div>
+			</div>
+		</form>
+
+	</div>
+</section>
+
+<script>
+	document.getElementById("uploadBtn").onchange = function () {
+    	document.getElementById("uploadFile").value = this.value.replace("C:\\fakepath\\", "");
+	};
+</script>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Sign Up</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/landing/jquery.dropotron.min.js"></script>
+  <script src="js/landing/jquery.scrollgress.min.js"></script>
+  <script src="js/landing/skel.min.js"></script>
+  <script src="js/landing/skel-layers.min.js"></script>
+  <script src="js/landing/init.js"></script>
+  <script src="js/jquery.leanModal.min.js"></script>
+  <script src="js/validate.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <noscript>
+    <link rel="stylesheet" href="css/landing/skel.css" />
+    <link rel="stylesheet" href="css/landing/style.css" />
+    <link rel="stylesheet" href="css/landing/style-wide.css" />
+  </noscript>
+  <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+</head>
+<body>
+
+  <section id="main" class="container 75%">
+    <header>
+      <h2>You're Almost done!</h2>
+      <p>Indio Artists has to pay a small fee to use our service. This fee helps covers the cost
+        of exposing your music to the world! No worries, you could possibly make every
+        penny back. Please choose a subcription plan and provide the card information.
+        Then provide us with the information of the debit card in which we should use to
+        deposit your Indio Profits!</p>
+    </header>
+
+    <div class="box">
+
+      <form action="/artist" name="artiststep2" method="post" >
+        <div class="row uniform 50%">
+          <div class="6u 12u(3)">
+            <select name="plan">
+              <option value="" disabled selected>Select your subcription plan</option>
+              <option value="artistbeta">Beta Monthly ($7.99/mon)</option>
+              <option value="artist1">Monthly ($9.99/mon)</option>
+              <option value="artist3">Quarterly ($22.99/3mon)</option>
+              <option value="artist2">Yearly ($89.99/mon)</option>
+            </select>
+          </div>
+          <div class="2u"></div>
+          <img src="img/stripe.png" class="4u" alt="Powered by Stripe">
+        </div>
+        <hr>
+        <div class="12u">
+          <h3>Payment information</h3>
+          <p><b>Please enter information for the card that will be charged for your subscription.</b>
+            All of the following information must be valid. Submitting invalid information
+            will result in your account being immediately terminated. Please review our Privacy
+            Policy to learn what we are doing with this information. We promise, it's only
+            for your benefit!</p>
+        </div>
+
+        <div class="row uniform 50%">
+          <div class="12u">
+            <input type="text" name="name" value="" placeholder="Cardholder Name"/>
+          </div>
+          <div class="12u">
+            <input type="text" name="cardnum" value="" placeholder="Card Number"/>
+          </div>
+        </div>
+        <div class="row uniform 50%">
+          <div class="3u">
+            <select name="cardmon">
+              <option value="" disabled selected>Expiration Month</option>
+              <option value="01">01</option><option value="02">02</option>
+              <option value="03">03</option><option value="04">04</option>
+              <option value="05">05</option><option value="06">06</option>
+              <option value="07">07</option><option value="08">08</option>
+              <option value="09">09</option><option value="10">10</option>
+              <option value="11">11</option><option value="12">12</option>
+            </select>
+          </div>
+          <div class="3u">
+            <select name="cardyr">
+              <option value="" disabled selected>Expiration Year</option>
+              <option value="15">2015</option><option value="16">2016</option>
+              <option value="17">2017</option><option value="18">2018</option>
+              <option value="19">2019</option><option value="20">2020</option>
+              <option value="21">2021</option><option value="22">2022</option>
+            </select>
+          </div>
+          <div class="2u"></div>
+          <div class="4u">
+            <input type="text" name="cardcvc" placeholder="CVC"/>
+          </div>
+        </div>
+        <hr>
+        <div class="12u">
+          <h3>Payout information</h3>
+          <p><b>Please enter information for the card that will be used for making deposits of
+            any profits earned on Indio.</b> All of the following information must be valid. Submitting
+            invalid information will result in your account being immediately terminated. Please review
+            our Privacy Policy to learn what we are doing with this information. We promise, it's only
+            for your benefit!  <u><b>DEBIT CARDS ONLY</b></u></p>
+          </div>
+
+          <div class="row uniform 50%">
+            <div class="12u">
+              <input type="text" name="nameOut" value="" placeholder="Cardholder Name"/>
+            </div>
+            <div class="12u">
+              <input type="text" name="cardnumOut" value="" placeholder="Card Number"/>
+            </div>
+          </div>
+          <div class="row uniform 50%">
+            <div class="3u">
+              <select name="cardmonOut">
+                <option value="" disabled selected>Expiration Month</option>
+                <option value="01">01</option><option value="02">02</option>
+                <option value="03">03</option><option value="04">04</option>
+                <option value="05">05</option><option value="06">06</option>
+                <option value="07">07</option><option value="08">08</option>
+                <option value="09">09</option><option value="10">10</option>
+                <option value="11">11</option><option value="12">12</option>
+              </select>
+            </div>
+            <div class="3u">
+              <select name="cardyrOut">
+                <option value="" disabled selected>Expiration Year</option>
+                <option value="15">2015</option><option value="16">2016</option>
+                <option value="17">2017</option><option value="18">2018</option>
+                <option value="19">2019</option><option value="20">2020</option>
+                <option value="21">2021</option><option value="22">2022</option>
+              </select>
+            </div>
+            <div class="2u"></div>
+            <div class="4u">
+              <input type="text" name="cardcvcOut" placeholder="CVC"/>
+            </div>
+          </div>
+        <div class="row uniform">
+          <div class="12u">
+            <ul class="actions align-center">
+              <li><input type="submit" /></li>
+            </ul>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <ul class="copyright">
+      <li>&copy; 2014 - 2015 Your Indio Inc., All Rights Reserved </li><li>The Legal Stuff</li>
+    </ul>
+  </footer>
+
+  <script>
+    //Forms validation
+    //Payment forms
+    var validator = new FormValidator('artiststep2', [{
+      name: 'plan',
+      rules: 'required'
+    }, {
+      name: 'cardnum',
+      rules: 'required'
+    }, {
+      name: 'cardmon',
+      rules: 'required'
+    }, {
+      name: 'cardyr',
+      rules: 'required'
+    }, {
+      name: 'cardcvc',
+      rules: 'required'
+    }, {
+      name: 'cardnumOut',
+      rules: 'required'
+    }, {
+      name: 'cardmonOut',
+      rules: 'required'
+    }, {
+      name: 'cardyrOut',
+      rules: 'required'
+    }, {
+      name: 'cardcvcOut',
+      rules: 'requred'
+    }, {
+      name: 'name',
+      rules: 'required'
+    }, {
+      name: 'nameOut',
+      rules: 'required'
+    }], function(errors, event) {
+      var errorString = '';
+
+      for (var i = 0, errorLength = errors.length; i < errorLength; i++) {
+        errorString += errors[i].message + '<br />';
+      }
+    document.getElementById('step2Errors').innerHTML = errorString
+  });
+  </script>
+</body>
+</html>

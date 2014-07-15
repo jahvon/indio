@@ -1,0 +1,57 @@
+<!-- Intro -->
+  <section id="home" class="one dark cover">
+    <div class="container">
+  		<header>
+  			<h2 class="alt">Now Playing:<br /><div id="jp_container_1" class="jp-audio"><a name="titlelink" href=""><span class="jp-title title_link"></span></a>
+  			by <a name="artistlink" href=""><span class="jp-artist"></span></a></div></h2>
+  		</header>
+  							
+  		<footer>
+  			<a href="#" class="button scrolly">Discover More</a>
+  		</footer>
+  
+  	</div>
+  </section>
+					
+<!-- Updates -->
+  <section id="updates" class="two">
+		<div class="container">
+			<header>
+				<h2>What's New!</h2>
+			</header>
+				<p>Artist feeds to go here</p>
+		</div>
+	</section>
+
+<div hidden>
+<div class="modal fade" id="finish" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Complete Profile</h3>
+  </div>
+  <div class="modal-body">
+     <form class="signin" action="/finishacc" method="post" enctype="multipart/form-data">
+    <% if @signinstatus != nil %><div class="alert alert-danger" role="alert"><%= @signinstatus %></div><% end %>
+    <p>Welcome to Indio! It seem like you have not yet completed your profile. Please take the time to fill out this form so your profile can show more personalized information about you!</p>
+    <p><div class="input-group">
+        <span class="input-group-btn">
+            <span class="btn btn-default btn-file">Browse&hellip; <input type="file" name="pic"></span><%= @uploaderror %>
+        </span>
+    <input type="text" class="form-control" readonly>
+    </div></p>
+    <p><input class="form-control" type="text" name="name" placeholder="Full Name" /></p>
+    <p><input class="form-control" type="text" name="locat" placeholder="Location" /></p>
+    <p><input class="form-control" type="text" name="site" placeholder="Website" /></p>
+    <p><textarea class="form-control"  name="desc" placeholder="Short bio" /></textarea></p>
+  </div>
+  <div class="modal-footer">
+    <input class="btn btn-info" type="submit" value="Submit">
+    <a data-dismiss="modal" class="btn btn-default">I'll do this later</a>
+    </form>
+     </div>
+    </div>
+  </div>
+</div>
+</div>

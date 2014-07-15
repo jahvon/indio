@@ -1,0 +1,83 @@
+<section id="about" class="three">
+	<div class="container">
+
+		
+		<header>
+			<a href="#" class="image featured"><img src="img/pic08.jpg" alt=""></a>
+			<img src="img/avatar.png" class="profile_pic">
+			<h2><%= @userprofile.capitalize %></h2>
+			<form action="/likeartist" method="post">
+				<input type="hidden" name="artist" value="<%= @userprofile %>">
+                <input type="submit" class="artistlike" value="Like Artist">
+            </form>
+		</header>
+		<table class="table">
+	    	<tr><td>Name</td><td>:</td><td><%= User.where(username: @userprofile)[0].name %></td></tr>
+            <tr><td>Location</td><td>:</td><td><%= User.where(username: @userprofile)[0].location %></td></tr>
+            <tr><td>Website</td><td>:</td><td><a href="http://<%= User.where(username: @userprofile)[0].website %>"><%= User.where(username: @userprofile)[0].website %></a></td></tr>
+            <tr><td>Biography</td><td>:</td><td><%= User.where(username: @userprofile)[0].bio %></td></tr>  
+        </table>
+
+	</div>
+</section>
+
+<section id="stats" class="two">
+	<div class="container">
+		<header>
+			<h2>Statistics</h2>
+		</header>
+							
+		<p>This user rocks.</p>
+						
+		<div class="row">
+			<div class="4u">
+				<article class="item">
+					<header><h3>Following</h3></header>
+        			<% if User.where(username: @userprofile)[0].userlevel >= 2%>
+        				<%= likes = User.where(username: @userprofile)[0].followers.count %> people like this artist
+        				<% if likes > 1 
+							User.where(username: @userprofile)[0].followers.each do |follower_id|
+								puts follower_id
+							end
+						end
+        			end %>
+				</article>
+				<article class="item">
+					<header><h3>Followers</h3></header>
+					<p>Insert followers here</p>
+				</article>
+			</div>
+			<div class="4u">
+				<article class="item">
+					<header><h3>Liked Songs</h3></header>
+					<p>Insert liked songs here</p>
+				</article>
+				<article class="item">
+					<header><h3>Uploaded Songs</h3></header>
+					<p>Insert artist followers here</p>
+				</article>
+			</div>
+			<div class="4u">
+				<article class="item">
+					<header><h3>Misc</h3></header>
+					<p>Insert misc here</p>
+				</article>
+				<article class="item">
+					<header><h3>Events</h3></header>
+					<p>Insert artist events here</p>
+				</article>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<section id="updates" class="four">
+	<div class="container">
+		<header>
+			<h2>Artist Updates Feed</h2>
+		</header>
+		<p>Insert update feed here</p>
+	</div>
+</section>
+  

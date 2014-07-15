@@ -1,0 +1,29 @@
+<section class="four">
+	<div class="container">
+		
+		<header><h2>Additional Profile Information</h2></header>
+		<p>Take a moment to add additional profile information!</p>
+		
+		<form action="/finishacc" method="post" enctype="multipart/form-data">
+			<div class="row 50%">
+				<div class="3u"><div class="fileUpload button"><span>Choose File</span><input type="file" id="uploadBtn" name="img_file" class="upload" /></div></div>
+				<div class="9u"><input type="text" id="uploadFile" placeholder="Profile picture..." readonly /></div>
+			</div>
+			<div class="row 50%">
+				<div class="4u"><input type="text" name="name" value="<%= @name %>" placeholder="Name"></div>
+				<div class="4u"><input type="text" name="location" value="<%= @location %>" placeholder="Location"></div>
+				<div class="4u"><input type="text" name="website" value="<%= @website %>" placeholder="Website"></div>
+				<div class="12u"><textarea rows="3" name="bio" placeholder="Bio"></textarea></div>
+			</div>
+			<div class="row">
+				<div class="12u"><input type="submit" value="Update Profile"></div>
+			</div>
+		</form>
+	</div>
+</section>
+
+<script>
+	document.getElementById("uploadBtn").onchange = function () {
+    	document.getElementById("uploadFile").value = this.value.replace("C:\\fakepath\\", "");
+	};
+</script>

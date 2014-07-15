@@ -1,0 +1,43 @@
+<div class="body_container">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 align="right"><%= Database.check("songs/" + @song_id + "/title").body.upcase %></h1>
+            <h1 align="right"><%= Database.check("songs/" + @song_id + "/artist").body.upcase %></h1>
+            <h1 align="right"><%= Database.check("songs/" + @song_id + "/description").body.upcase %></h1>
+        </div>
+        <div class="col-md-6">
+            <img src="http://artsorigin.com/blog/wp-content/uploads/2009/05/graduation-album-cover.jpg" style="height:170px; width:170px; margin-top:10px; border-radius:30px">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 inner_body">
+            
+        </div>
+    </div>
+
+    <form action="/charge" method="post" class="payment">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= settings.publishable_key %>" data-name="<%= Database.check("songs/" + @song_id + "/title").body %>" data-description="Purchase this song for $5.00"></script>
+    </form>
+    
+    
+    
+    <div class="comments">
+        <form action="/post_comment" method="post">
+            <input type="text" name="songid" value="<%= @song_id %>" hidden="true">
+            <textarea class="form-control" name="comment"></textarea>
+            <input type="submit">
+        </form>
+        
+<% 
+if Song.comments(@song_id) != nil
+    value = Song.comments(@song_id) 
+    value.each do |x|
+        %>Poster: <%= x['user'] %><br>
+        Comment: <%= x['comment'] %><br>
+        Time: <%= Time.at(x['timestamp']) %><br> 
+    <% end else %>
+    There are no comments
+<% end %>
+        
+    </div>
+</div>
