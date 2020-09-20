@@ -24,11 +24,6 @@ get '/home' do
     end
 end
 
-
-get '/test' do
-    erb :"test.html", :layout => false
-end
-
 get '/settings' do
     erb :"settings.html"
 end
