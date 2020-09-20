@@ -1,5 +1,7 @@
 FROM ruby:2.6-alpine
 
+ENV APP_ENV production
+
 RUN apk update && apk upgrade
 RUN apk add --no-cache postgresql-client build-base postgresql-dev bash
 
