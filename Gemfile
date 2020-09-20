@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.5.7'
+ruby '2.6.6'
 
 gem "activerecord"
 gem 'aws-sdk'
@@ -15,6 +15,6 @@ gem 'sinatra-redirect-with-flash'
 gem 'stripe'
 
 group :development do
- gem 'pry'
+ gem 'byebug'
  gem 'sqlite3'
 end

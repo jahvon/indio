@@ -1,14 +1,14 @@
-FROM ruby:2.5.7
+FROM ruby:2.6-alpine
 
-RUN apt-get update && apt-get install -qq -y --no-install-recommends build-essential libpq-dev curl
-RUN apt-get update && apt-get install -qq -y --no-install-recommends postgresql-client
+RUN apk update && apk upgrade
+RUN apk add --no-cache postgresql-client build-base postgresql-dev
 
 RUN mkdir -p /app
 WORKDIR /app
 
 COPY Gemfile /app/
 COPY Gemfile.lock /app/
-RUN bundle install
+RUN bundle install --without development test
 COPY . /app
 
 EXPOSE 5000
