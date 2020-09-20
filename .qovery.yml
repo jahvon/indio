@@ -6,7 +6,7 @@ application:
 databases:
 - type: postgresql
   version: "12"
-  name: my-postgresql-8628210
+  name: indio
 routers:
 - name: main
   routes:
