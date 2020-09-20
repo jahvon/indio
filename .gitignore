@@ -21,13 +21,5 @@ pickle-email-*.html
 .LSOverride
 Icon
 
-# Specific files
-/environment.rb
-/name.db
-
 # Thumbnails
 ._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes

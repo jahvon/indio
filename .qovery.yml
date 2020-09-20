@@ -1,0 +1,15 @@
+application:
+  name: indio
+  project: Indio
+  cloud_region: aws/us-east-2
+  publicly_accessible: true
+databases:
+- type: postgresql
+  version: "12"
+  name: indio
+routers:
+- name: main
+  routes:
+  - application_name: indio
+    paths:
+    - /
