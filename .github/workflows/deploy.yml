@@ -31,7 +31,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: jahvon/indio:latest\
+          tags: jahvond/indio:latest\
           file: ./Dockerfile
           context: .
       -
